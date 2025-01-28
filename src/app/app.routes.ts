@@ -5,6 +5,7 @@ import { AuthlayoutComponent } from './layout/authlayout/authlayout.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ElementsCurdComponent } from './pages/elements-curd/elements-curd.component';
 import { LoginComponent } from './user/login/login.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +18,11 @@ export const routes: Routes = [
             {
                 path:'home',
                 component:ElementsCurdComponent,
+                canActivate:[AuthGuard]
+            },
+            {
+                path:'employee',
+                component:EmployeeComponent,
                 // canActivate:[AuthGuard]
             }
         ]
