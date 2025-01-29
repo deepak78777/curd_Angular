@@ -1,0 +1,67 @@
+/* Styling the login page */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+  
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+  
+      label {
+        display: block;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+  
+      input:focus {
+        border-color: #007bc6;
+        box-shadow: 0 0 5px rgba(0, 123, 198, 0.3);
+      }
+    }
+  
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bc6;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: #005f8a;
+      }
+    }
+  
+    .error {
+      margin-top: 15px;
+      color: red;
+      font-size: 14px;
+    }
+  }
+  

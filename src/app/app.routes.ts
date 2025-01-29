@@ -6,6 +6,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { ElementsCurdComponent } from './pages/elements-curd/elements-curd.component';
 import { LoginComponent } from './user/login/login.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
+import { register } from 'module';
+import { RegisterComponent } from './user/register/register.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -35,6 +37,10 @@ export const routes: Routes = [
             {
                 path:'login',
                 component:LoginComponent
+            },
+            {
+                path:'register',
+                component:RegisterComponent
             }
         ]
     },
