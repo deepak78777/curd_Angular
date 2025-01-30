@@ -4,8 +4,8 @@
   </button>
   <a href="home">Home</a>
   <a href="employee" class="ps-4">employee</a>
-  <span>My App</span>
-  <a href="login" class="ps-4">Logout</a>
+  <span class="ps-4">My App</span>
+  
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
@@ -13,4 +13,5 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
+  <button (click)="islogout()" class="btn btn-danger ps-20" >Logout</button>
 </mat-toolbar>
