@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Record
 from .serializers import RecordSerializer
-
+from rest_framework import viewsets
 @api_view(['POST'])
 def create_record(request):
     serializer = RecordSerializer(data=request.data)
@@ -36,7 +36,13 @@ def delete_record(request, pk):
     try:
         record = Record.objects.get(pk=pk)
     except Record.DoesNotExist:
-        return Response(status=404)
-    
+        return Response({'error': 'Record not found'}, status=404)
+
     record.delete()
-    return Response(status=204)
+    return Response({'message': 'Record deleted successfully'}, status=204)
+    
+
+
+class RecordViewSet(viewsets.ModelViewSet):
+    queryset = Record.objects.all()
+    serializer_class = RecordSerializer

@@ -1,0 +1,48 @@
+<div class="form-container">
+  <h2>Create Form</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="myForm.get('name')?.hasError('required')">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" formControlName="amount" required />
+      <mat-error *ngIf="myForm.get('amount')?.hasError('required')">
+        Amount is required.
+      </mat-error>
+      <mat-error *ngIf="myForm.get('amount')?.hasError('min')">
+        Amount must be at least 1.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" formControlName="date" required />
+      <mat-error *ngIf="myForm.get('date')?.hasError('required')">
+        Date is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Village</mat-label>
+      <input matInput formControlName="village" required />
+      <mat-error *ngIf="myForm.get('village')?.hasError('required')">
+        Village is required.
+      </mat-error>
+    </mat-form-field>
+
+    <div style="display: flex;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Submitting...' : 'Submit' }}
+      </button>
+      <button mat-raised-button color="Warning" (click)="onClosed()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

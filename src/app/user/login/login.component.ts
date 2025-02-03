@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonFunctionsService } from '../../services/common-functions.service';
+
 
 @Component({
   selector: 'app-login',
@@ -14,17 +16,18 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private authService: AuthServiceService) {}
+  constructor(private authService: AuthServiceService ,private snackbar:CommonFunctionsService) {}
 
   login() {
     this.authService.login(this.username, this.password).subscribe({
       next: () => {
         console.log('Login successful');
+        this.snackbar.showSnackbar('Login Successfully')
       },
       error: (err) => {
-        this.errorMessage = err.message;
+        this.snackbar.showSnackbar(err)
       },
     });
   }
-
+  
 }

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthServiceService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonFunctionsService } from '../../services/common-functions.service';
+
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,7 @@ export class RegisterComponent {
   confirmPassword: string = '';
   errorMessage: string = '';
 
-  constructor(private authService: AuthServiceService, private router: Router) {}
+  constructor(private authService: AuthServiceService, private router: Router ,private snackbar:CommonFunctionsService) {}
 
   register() {
     if (this.password !== this.confirmPassword) {
@@ -32,18 +34,14 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.authService.register(userData).subscribe(
-      (response:any) => {
-        if (response) {
-          this.router.navigate(['/login']);
-        } else {
-          this.errorMessage = 'Registration failed. Please try again.';
-        }
+    this.authService.register(userData).subscribe({
+      next: () => {
+        this.snackbar.showSnackbar('Registered Successfully')
+        this.router.navigate(['/login']);
       },
-      (error:any) => {
-        console.error(error);
-        this.errorMessage = 'An error occurred. Please try again later.';
-      }
-    );
+      error: (err) => {
+        this.snackbar.showSnackbar(err)
+      },
+    });
   }
 }
