@@ -96,10 +96,11 @@ export class ElementsCurdComponent implements AfterViewInit {
   }
   
   deleteRecord(id: number) {
-    this.http.delete(`${this.api.records}${id}/delete/`).subscribe({
+    this.http.delete(`${this.api.delete}${id}/`).subscribe({
       next: () => {
         // this.snackBar.showSnackbar('Record deleted successfully!');
         // Refresh your data table here
+        this.fetchData()
       },
       error: () => {
         // this.snackBar.showSnackbar('Failed to delete record!');

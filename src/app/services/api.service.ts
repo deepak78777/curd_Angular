@@ -10,5 +10,5 @@ export class ApiService {
 
   public records=`${this.MainUrl}/api/records/`
   public create=`${this.MainUrl}/api/create/`
-
+  public delete=`${this.MainUrl}/api/delete/`
 }
