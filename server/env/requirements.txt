@@ -3,7 +3,6 @@ certifi==2025.1.31
 cffi==1.17.1
 charset-normalizer==3.4.1
 cryptography==44.0.1
-dj-database-url==2.3.0
 Django==5.1.5
 django-allauth==65.4.1
 django-cors-headers==4.6.0
@@ -17,6 +16,5 @@ pycparser==2.22
 PyJWT==2.10.1
 requests==2.32.3
 sqlparse==0.5.3
-typing_extensions==4.12.2
 tzdata==2025.1
 urllib3==2.3.0

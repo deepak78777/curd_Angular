@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 
@@ -22,7 +22,7 @@ SECRET_KEY = 'django-insecure-cfzjrl)78^@3e*rubhc*xo0px=zaoe%&i%b8a933_s%ho11o3$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -97,12 +97,16 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-# Enable CORS for all origins
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',
-    # 'https://your-angular-app.netlify.app',
-    'https://aesthetic-muffin-ea7df2.netlify.app'
-]
+# # Enable CORS for all origins
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:4200',
+#     # 'https://your-angular-app.netlify.app',
+#     'https://aesthetic-muffin-ea7df2.netlify.app'
+# ]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "your-railway-app-url,localhost").split(",")
+
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:4200,https://your-angular-app.netlify.app").split(",")
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS Middleware
@@ -138,11 +142,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
 # Database Configuration (Using SQLite)
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.config(default="sqlite:///db.sqlite3", conn_max_age=600)
 }
 AUTH_USER_MODEL = 'Auth_folder.CustomUser'
 
