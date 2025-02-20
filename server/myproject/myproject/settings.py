@@ -39,13 +39,33 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',  # JWT Authentication
     'Auth_folder',
     'rest_framework_simplejwt.token_blacklist',  # Enable token blacklisting
+    'django.contrib.sites',  # Required for allauth
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+SITE_ID = 1  # Required for allauth
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For email-based login
 
 SIMPLE_JWT = {
     # Token Expiration Times
@@ -78,10 +98,16 @@ SIMPLE_JWT = {
 }
 
 # Enable CORS for all origins
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+    # 'https://your-angular-app.netlify.app',
+    'https://aesthetic-muffin-ea7df2.netlify.app'
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS Middleware
+    'allauth.account.middleware.AccountMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
