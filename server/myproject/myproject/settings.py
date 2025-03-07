@@ -104,7 +104,8 @@ SIMPLE_JWT = {
 #     # 'https://your-angular-app.netlify.app',
 #     'https://aesthetic-muffin-ea7df2.netlify.app'
 # ]
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "your-railway-app-url,localhost").split(",")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "your-railway-app-url,localhost").split(",")
+ALLOWED_HOSTS=["*"]
 
 CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:4200,https://your-angular-app.netlify.app").split(",")
 
@@ -112,7 +113,7 @@ CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS Middleware
     'allauth.account.middleware.AccountMiddleware',
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -175,6 +176,7 @@ USE_TZ = True
 
 # Static files settings
 STATIC_URL = 'static/'
+STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
