@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   constructor() { }
-  public MainUrl = 'http://localhost:8000/';
+  public MainUrl = 'https://curd_Angular-2.onrender.com';
 
   public records=`${this.MainUrl}/api/records/`
   public create=`${this.MainUrl}/api/create/`
