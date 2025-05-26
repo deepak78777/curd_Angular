@@ -107,8 +107,8 @@ SIMPLE_JWT = {
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "your-railway-app-url,localhost").split(",")
 ALLOWED_HOSTS=["*"]
 
-CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "https://curdangular2.netlify.app/").split(",")
-
+# CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "https://curdangular2.netlify.app/").split(",")
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS Middleware
