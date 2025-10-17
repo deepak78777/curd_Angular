@@ -1,22 +1,30 @@
-<div  style="padding-top: 10%;">
-<div class="login-container">
-  <h2>Login</h2>
-  <form (ngSubmit)="login()">
-    <div class="input-group">
-      <label for="username">Username</label>
-      <input id="username" [(ngModel)]="username" name="username" required />
-    </div>
+<div style="padding-top: 10%;">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form (ngSubmit)="login()">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input id="username" [(ngModel)]="username" name="username" required />
+      </div>
 
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input id="password" [(ngModel)]="password" name="password" type="password" required />
-    </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input id="password" [(ngModel)]="password" name="password" type="password" required />
+      </div>
 
-    <button type="submit" class="login-btn">Login</button>
-    <br>
-    <a href="/register">Don't have account</a>
-  </form>
+      <button type="submit" class="login-btn">Login</button>
+      <br />
+      <a href="/register">Don't have account</a>
+    </form>
 
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+    <hr />
+
+    <!-- Google Login Button -->
+    <button (click)="loginWithGoogle()" class="google-btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Logo" width="20" />
+      Login with Google
+    </button>
+  </div>
 </div>

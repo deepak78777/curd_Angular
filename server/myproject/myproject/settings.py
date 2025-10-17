@@ -46,8 +46,10 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+     'allauth.socialaccount.providers.github', 
 ]
-SITE_ID = 1  # Required for allauth
+SITE_ID = 4  # Required for allauth
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -59,10 +61,18 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
+        'App':{
+            'client_id':'749769229123-59asu9pehnhelu4ropgmlhprpv8nrvfv.apps.googleusercontent.com',
+            'secret':'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'
+        },
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
+    },
+    'github': {
+        'SCOPE': ['user', 'email'],
     }
 }
 
@@ -181,3 +191,15 @@ STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SOCIALACCOUNT_LOGIN_GET=True
+ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'allauth.socialaccount.adapter.DefaultSocialAccountAdapter'
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+# Allow linking social accounts to existing users with the same email
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = "none"

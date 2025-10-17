@@ -8,7 +8,9 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  private apiUrl = 'https://curd-angular-2.onrender.com/auth'; // Ensure correct API base URL
+  // private apiUrl = 'https://curd-angular-2.onrender.com/auth'; // Ensure correct API base URL
+  private apiUrl = 'http://127.0.0.1:8000/auth'; // Ensure correct API base URL
+
 
   constructor(private http: HttpClient, private router: Router) {}
 
