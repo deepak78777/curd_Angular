@@ -40,3 +40,40 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.prod
+.env.staging
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+venv/
+env/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# SSL/Certificates
+ssl/
+*.pem
+*.key
+*.crt
+*.csr
+
+# Logs
+logs/
+*.log
+db.sqlite3
+/staticfiles/
+/media/
+
+# Build
+build/
+.coverage
+htmlcov/
